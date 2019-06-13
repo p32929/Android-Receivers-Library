@@ -45,31 +45,31 @@ public class TestReceiver extends EasyReceivers {
     @Override
     protected void onIncomingCallStarted(Context context, Intent intent, String number, Date start) {
         super.onIncomingCallStarted(context, intent, number, start);
-        Log.d(TAG, "onIncomingCallStarted: ");
+        Log.d(TAG, "onIncomingCallStarted: "+number);
     }
 
     @Override
     protected void onOutgoingCallStarted(Context context, Intent intent, String number, Date start) {
         super.onOutgoingCallStarted(context, intent, number, start);
-        Log.d(TAG, "onOutgoingCallStarted: ");
+        Log.d(TAG, "onOutgoingCallStarted: "+number);
     }
 
     @Override
     protected void onIncomingCallEnded(Context context, Intent intent, String number, Date start, Date end) {
         super.onIncomingCallEnded(context, intent, number, start, end);
-        Log.d(TAG, "onIncomingCallEnded: ");
+        Log.d(TAG, "onIncomingCallEnded: "+number);
     }
 
     @Override
     protected void onOutgoingCallEnded(Context context, Intent intent, String number, Date start, Date end) {
         super.onOutgoingCallEnded(context, intent, number, start, end);
-        Log.d(TAG, "onOutgoingCallEnded: ");
+        Log.d(TAG, "onOutgoingCallEnded: "+number);
     }
 
     @Override
     protected void onMissedCall(Context context, Intent intent, String number, Date start) {
         super.onMissedCall(context, intent, number, start);
-        Log.d(TAG, "onMissedCall: ");
+        Log.d(TAG, "onMissedCall: "+number);
     }
 
     @Override

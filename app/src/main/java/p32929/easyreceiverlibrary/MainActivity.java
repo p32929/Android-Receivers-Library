@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(new TestReceiver(), intentFilter);
 
         Dexter.withActivity(this)
-                .withPermissions(Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_CALL_LOG)
+                .withPermissions(Manifest.permission.READ_PHONE_STATE)
                 .withListener(new MultiplePermissionsListener() {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
