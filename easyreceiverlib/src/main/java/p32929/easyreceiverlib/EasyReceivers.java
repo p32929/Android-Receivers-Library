@@ -61,8 +61,7 @@ public class EasyReceivers extends BroadcastReceiver {
 
                 if (state == 1) {
                     onHeadphoneConnected(context, intent);
-                }
-                else if (state == 2) {
+                } else if (state == 2) {
                     onHeadphoneDisconnected(context, intent);
                 } else {
                     Log.d(TAG, "onReceive: Unknown Headphone connection state");
@@ -76,16 +75,13 @@ public class EasyReceivers extends BroadcastReceiver {
             }
 
             // Calls
-            if (intent.getAction().equals("android.intent.action.NEW_OUTGOING_CALL")) {
+            if (intent.getAction().equals(Intent.ACTION_NEW_OUTGOING_CALL)) {
                 savedNumber = intent.getExtras().getString("android.intent.extra.PHONE_NUMBER");
-            }
-
-            if (intent.getExtras() != null) {
+            } else {
                 String stateStr = intent.getExtras().getString(TelephonyManager.EXTRA_STATE);
                 String number = intent.getExtras().getString(TelephonyManager.EXTRA_INCOMING_NUMBER);
                 int state = 0;
-
-                if (stateStr != null) {
+                if (stateStr != null && number != null) {
                     if (stateStr.equals(TelephonyManager.EXTRA_STATE_IDLE)) {
                         state = TelephonyManager.CALL_STATE_IDLE;
                     } else if (stateStr.equals(TelephonyManager.EXTRA_STATE_OFFHOOK)) {
@@ -93,6 +89,7 @@ public class EasyReceivers extends BroadcastReceiver {
                     } else if (stateStr.equals(TelephonyManager.EXTRA_STATE_RINGING)) {
                         state = TelephonyManager.CALL_STATE_RINGING;
                     }
+
                     onCallStateChanged(context, state, number, intent);
                 }
             }
@@ -162,6 +159,8 @@ public class EasyReceivers extends BroadcastReceiver {
 
     // Private methods
     private void onCallStateChanged(Context context, int state, String number, Intent intent) {
+        Log.d(TAG, "onCallStateChanged: ");
+
         if (lastState == state) {
             // No change, debounce extras
             return;

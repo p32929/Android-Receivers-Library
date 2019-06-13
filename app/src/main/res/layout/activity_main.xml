@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="18sp"
+        android:textSize="56sp"
+        android:onClick="emne"
         android:text="Hello World!" />
 
 </LinearLayout>
